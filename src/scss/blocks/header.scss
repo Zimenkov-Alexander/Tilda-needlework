@@ -4,7 +4,7 @@
 	justify-content: space-between;
 	flex-wrap: wrap;
 	min-width: 1200px;
-	z-index: 5;
+	z-index: 555;
 
 	&::before{
 		content: '';
@@ -16,7 +16,7 @@
 		width: 487px;
 		height: 344px;
 
-		background-image: url(/img/bg/1.png);
+		background-image: url(../img/bg/1.png);
 	}
 }
 .header__logo{

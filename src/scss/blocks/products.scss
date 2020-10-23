@@ -1,6 +1,19 @@
 .products{
+	position: relative;
 	display: flex;
 	align-items: center;
+	&::before{
+		content: '';
+		position: absolute;
+		width: 750px;
+		height: 1121px;
+		left: 0;
+		top: 27%;
+		background-image: url(/img/bg/4.jpg);
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+	}
 }
 .products__wrapper{
 	display: flex;
@@ -153,7 +166,6 @@
 		}
 	}
 }
-
 .products__list__besides{
 	display: flex;
 	justify-content: space-between;
