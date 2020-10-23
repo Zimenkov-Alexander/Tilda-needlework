@@ -1,0 +1,22 @@
+.form__catalog{
+	position: relative;
+	margin-bottom: 110px;
+	color: white;
+}
+.form__wrapper{
+	position: relative;
+	height: 355px;
+	background-color: #cf3d5a;
+	&::before{
+		content: '';
+		position: absolute;
+		width: 420px;
+		height: 480px;
+		bottom: 0;
+		right: 0;
+		background-image: url(/img/form/bg_img.png);
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+}
