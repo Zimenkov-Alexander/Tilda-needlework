@@ -1,0 +1,49 @@
+.header{
+	display: flex;
+	position: relative;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	min-width: 1200px;
+	z-index: 5;
+
+	&::before{
+		content: '';
+		z-index: 1;
+		position: absolute;
+		top: 0;
+		right: 0;
+		margin-right: -350px;
+		width: 487px;
+		height: 344px;
+
+		background-image: url(/img/bg/1.png);
+	}
+}
+.header__logo{
+	display: flex;
+	margin-top: 4px;
+	margin-left: 16px;
+	.logo__img{
+		margin-top: 3px;
+		margin-right: 48px;
+	}
+	.logo__text{
+		margin-top: 22px;
+		font-size: 14px;
+		max-width: 197px;
+	}
+}
+.header__contact{
+	display: flex;
+	margin-top: 18px;
+	margin-right: 5px;
+	z-index: 101;
+}
+.header__phone{
+	margin-top: 15px;
+	margin-right: 30px;
+
+}
+.header__phone-numer{
+	font-size: 20px;
+}
