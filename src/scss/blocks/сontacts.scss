@@ -1,0 +1,35 @@
+.сontacts_and_map__wrapper{
+	display: flex;
+	margin-top: 175px;
+}
+.сontacts{
+	width: 270px;
+	margin-right: 30px;
+	color: $font-color;
+	font-size: 16px;
+}
+.сontacts__title{
+	font-size: 30px;
+	font-weight: bold;
+	margin-bottom: 50px;
+}
+.сontacts__wrapper{
+	margin-bottom: 35px;
+	.сontacts__address{
+		margin-bottom: 35px;
+	}
+	.сontacts__phone, .сontacts__email{
+		font-weight: bold;
+	}
+}
+.сontacts__question{
+	margin-bottom: 40px;
+	.question__title{
+		font-weight: bold;
+		font-size: 20px;
+		margin-bottom: 12px;
+	}
+	.question__desc{
+		line-height: 1.63;
+	}
+}
