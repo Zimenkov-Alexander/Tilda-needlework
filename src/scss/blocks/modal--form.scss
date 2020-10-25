@@ -10,23 +10,32 @@
 	min-height: 555px;
 	background-color: #cf3d5a;
 	padding: 58px 48px;
-	&::before,&::after{
-		content: '';
+	.close__modal{
 		position: absolute;
-		top: 0;
-		right: 0;
 		margin-top: 22px;
 		margin-right: 14px;
+		top: 0;
+		right: 0;
 		width: 23px;
-		height: 1px;
+		height: 23px;
 
-		background-color: white;
-	}
-	&::before{
-		transform: rotate(45deg);
-	}
-	&::after{
-		transform: rotate(-45deg);
+		&::before,&::after{
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			margin-top: 11px;
+			width: 23px;
+			height: 1px;
+	
+			background-color: white;
+		}
+		&::before{
+			transform: rotate(45deg);
+		}
+		&::after{
+			transform: rotate(-45deg);
+		}
 	}
 	.modal--form__info{
 		color: white;

@@ -81,42 +81,133 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/js/index.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
+/***/ "./src/js/index.js":
+/*!*************************!*\
+  !*** ./src/js/index.js ***!
+  \*************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _js_modules_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/modules/module */ "./src/js/modules/module.js");
+/* harmony import */ var _modules_modal_form__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal-form */ "./src/js/modules/modal-form.js");
+/* harmony import */ var _modules_modal_thank_window__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/modal-thank-window */ "./src/js/modules/modal-thank-window.js");
 
 
-console.log(_js_modules_module__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+
+
+window.addEventListener('DOMContentLoaded', () => {
+	Object(_modules_modal_form__WEBPACK_IMPORTED_MODULE_0__["default"])('.modal--form','.close__modal', '.btn');
+	// modalThankWindow();
+});
 
 /***/ }),
 
-/***/ "./src/js/modules/module.js":
-/*!**********************************!*\
-  !*** ./src/js/modules/module.js ***!
-  \**********************************/
+/***/ "./src/js/modules/modal-form.js":
+/*!**************************************!*\
+  !*** ./src/js/modules/modal-form.js ***!
+  \**************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function modalForm (modalWindow, modalClose, ...btnsSelector) {
 
+	btnsSelector.forEach(item => {
+		document.querySelectorAll(item).forEach(btn => {
+			btn.addEventListener('click', (evt) => {
+				evt.preventDefault();
+				showModal();
+			});
+		});
+	});
 
-let template = 'Done';
+	const modal = document.querySelector(modalWindow),
+				closeBtn = document.querySelector(modalClose);
 
+	closeBtn.addEventListener('click', hideModal);
 
-/* harmony default export */ __webpack_exports__["default"] = (template);
+	function showModal(){
+		modal.classList.remove('hide');
+		modal.classList.add('show');
+	}
+	function hideModal(){
+		modal.classList.add('hide');
+		modal.classList.remove('show');
+	}
+
+	document.addEventListener('keydown', (evt) =>{
+		if (evt.code === 'Escape' && modal.classList.contains('show')){
+			hideModal();
+		}
+	});
+}
+/* harmony default export */ __webpack_exports__["default"] = (modalForm);
+
+/***/ }),
+
+/***/ "./src/js/modules/modal-thank-window.js":
+/*!**********************************************!*\
+  !*** ./src/js/modules/modal-thank-window.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function modal () {
+
+	const modalOpenBtn = document.querySelectorAll('[data-modal]'),
+		modal = document.querySelector('.modal'),
+		modalTimerId = setTimeout(modalToggle, (1000 * 60 * 3));
+
+	function modalToggle () {
+		modal.classList.toggle('show');
+		modal.classList.toggle('hide');
+
+		clearInterval(modalTimerId);
+
+		if (modal.classList.contains('show')){
+			document.body.style.overflow = 'hidden';
+		} else{
+			document.body.style.overflow = '';
+		}
+	}
+
+	function showModalByScroll (){
+		if (window.pageYOffset + document.documentElement.clientHeight >= document.
+			documentElement.scrollHeight){
+				modalToggle();
+				window.removeEventListener('scroll', showModalByScroll);
+		}
+	}
+
+	modalOpenBtn.forEach( (item) => {
+		item.addEventListener('click', modalToggle);
+	});
+
+	modal.addEventListener('click', (evt) => {
+		if (evt.target === modal || evt.target.getAttribute('data-close') == ""){
+			modalToggle();
+		}
+	});
+	
+	document.addEventListener('keydown', (evt) =>{
+		if (evt.code === 'Escape' && modal.classList.contains('show')){
+			modalToggle();
+		}
+	});
+
+	window.addEventListener('scroll', showModalByScroll);
+}
+/* harmony default export */ __webpack_exports__["default"] = (modal);
 
 /***/ })
 

@@ -432,15 +432,6 @@
 			</div>
 		</footer>
 	</div>
-	<section class="modal hide modal--thank-window">
-		<div class="thank-window__wrapper">
-			<h2 class="thank-window__title"> Благодарим Вас!</h2>
-			<p class="thank-window__desc">
-				Ваша заявка отправлена нашему менеджеру. <br>
-				Он перезвонит Вам через 2 минуты.
-			</p>
-		</div>
-	</section>
 	<section class="modal hide modal--form">
 		<div class="modal--form__wrapper">
 			<div class="modal--form__info">
@@ -449,19 +440,29 @@
 			</div>
 			<form action="#">
 				<div class="form-item">
-					<label for="catalog-name" class="visually-hidden"></label>
-					<input id="catalog-name" type="text" name="name" placeholder="Ваше Имя">
+					<label for="catalog-name__modal" class="visually-hidden"></label>
+					<input id="catalog-name__modal" type="text" name="name" placeholder="Ваше Имя">
 				</div>
 				<div class="form-item">
-					<label for="catalog-mobile" class="visually-hidden"></label>
-					<input id="catalog-mobile" type="tel" name="phone" placeholder="Ваш Телефон">
+					<label for="catalog-mobile__modal" class="visually-hidden"></label>
+					<input id="catalog-mobile__modal" type="tel" name="phone" placeholder="Ваш Телефон">
 				</div>
 				<div class="form-item">
-					<label for="catalog-email" class="visually-hidden"></label>
-					<input id="catalog-email" type="email" name="email" placeholder="Ваша почта">
+					<label for="catalog-email__modal" class="visually-hidden"></label>
+					<input id="catalog-email__modal" type="email" name="email" placeholder="Ваша почта">
 				</div>
 				<button class="btn btn--orange btn--form" type="submit" name="form-modal">Узнать про цветопробу</button>
 			</form>
+			<span class="close__modal"></span>
+		</div>
+	</section>
+	<section class="modal hide modal--thank-window">
+		<div class="thank-window__wrapper">
+			<h2 class="thank-window__title"> Благодарим Вас!</h2>
+			<p class="thank-window__desc">
+				Ваша заявка отправлена нашему менеджеру. <br>
+				Он перезвонит Вам через 2 минуты.
+			</p>
 		</div>
 	</section>
   <script src="js/bundle.js"></script>
