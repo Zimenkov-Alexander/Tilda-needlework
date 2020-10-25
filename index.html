@@ -339,7 +339,7 @@
 							<label for="radio-4"></label>
 						</div>
 						<div class="form_radio">
-							<input type="radio" id="radio-5" class="nav__btn" name="slide__btn" value="5" disabled>
+							<input type="radio" id="radio-5" class="nav__btn" name="slide__btn" value="5">
 							<label for="radio-5"></label>
 						</div>						
 					</div>
@@ -432,7 +432,39 @@
 			</div>
 		</footer>
 	</div>
-
+	<section class="modal hide modal--form">
+		<div class="modal--form__wrapper">
+			<div class="modal--form__info">
+				<h2 class="modal--form__title">Заполните форму</h2>
+				<p class="modal--form__desc">чтобы получить в <span class="text--bolt">подарок сертификат на 2 000 грн</span> для покупки паркета</p>
+			</div>
+			<form action="#">
+				<div class="form-item">
+					<label for="catalog-name__modal" class="visually-hidden"></label>
+					<input id="catalog-name__modal" type="text" name="name" placeholder="Ваше Имя">
+				</div>
+				<div class="form-item">
+					<label for="catalog-mobile__modal" class="visually-hidden"></label>
+					<input id="catalog-mobile__modal" type="tel" name="phone" placeholder="Ваш Телефон">
+				</div>
+				<div class="form-item">
+					<label for="catalog-email__modal" class="visually-hidden"></label>
+					<input id="catalog-email__modal" type="email" name="email" placeholder="Ваша почта">
+				</div>
+				<button class="btn btn--orange btn--form btn--form-modal" type="submit" name="form-modal">Узнать про цветопробу</button>
+			</form>
+			<span class="close__modal"></span>
+		</div>
+	</section>
+	<section class="modal hide modal--thank-window">
+		<div class="thank-window__wrapper">
+			<h2 class="thank-window__title"> Благодарим Вас!</h2>
+			<p class="thank-window__desc">
+				Ваша заявка отправлена нашему менеджеру. <br>
+				Он перезвонит Вам через 2 минуты.
+			</p>
+		</div>
+	</section>
   <script src="js/bundle.js"></script>
 </body>
 </html>

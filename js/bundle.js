@@ -81,42 +81,118 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/js/index.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
+/***/ "./src/js/index.js":
+/*!*************************!*\
+  !*** ./src/js/index.js ***!
+  \*************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _js_modules_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/modules/module */ "./src/js/modules/module.js");
+/* harmony import */ var _modules_modal_form__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal-form */ "./src/js/modules/modal-form.js");
+/* harmony import */ var _modules_modal_thank_window__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/modal-thank-window */ "./src/js/modules/modal-thank-window.js");
 
 
-console.log(_js_modules_module__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+
+
+window.addEventListener('DOMContentLoaded', () => {
+	Object(_modules_modal_form__WEBPACK_IMPORTED_MODULE_0__["default"])('.modal--form','.close__modal', '.btn');
+	Object(_modules_modal_thank_window__WEBPACK_IMPORTED_MODULE_1__["default"])('.modal--thank-window', '.btn--form-modal');
+});
 
 /***/ }),
 
-/***/ "./src/js/modules/module.js":
-/*!**********************************!*\
-  !*** ./src/js/modules/module.js ***!
-  \**********************************/
+/***/ "./src/js/modules/modal-form.js":
+/*!**************************************!*\
+  !*** ./src/js/modules/modal-form.js ***!
+  \**************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function modalForm (modalWindow, modalClose, ...btnsOpenSelectors) {
 
+	btnsOpenSelectors.forEach(item => {
+		document.querySelectorAll(item).forEach(btn => {
+			btn.addEventListener('click', (evt) => {
+				if (btn.classList.contains('btn--form-modal')){
+					evt.preventDefault();
+				} else{
+					evt.preventDefault();
+					showModal();
+				}
+			});
+		});
+	});
 
-let template = 'Done';
+	const modal = document.querySelector(modalWindow),
+				closeBtn = document.querySelector(modalClose);
 
+	closeBtn.addEventListener('click', hideModal);
 
-/* harmony default export */ __webpack_exports__["default"] = (template);
+	function showModal(){
+		modal.classList.remove('hide');
+		modal.classList.add('show');
+	}
+	function hideModal(){
+		modal.classList.add('hide');
+		modal.classList.remove('show');
+	}
+
+	document.addEventListener('keydown', (evt) =>{
+		if (evt.code === 'Escape' && modal.classList.contains('show')){
+			hideModal();
+		}
+	});
+}
+/* harmony default export */ __webpack_exports__["default"] = (modalForm);
+
+/***/ }),
+
+/***/ "./src/js/modules/modal-thank-window.js":
+/*!**********************************************!*\
+  !*** ./src/js/modules/modal-thank-window.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function modalThankWindow (modalWindow, modalOpenBtn) {
+
+	const modal = document.querySelector(modalWindow),
+				OpenBtn = document.querySelector(modalOpenBtn);
+
+	OpenBtn.addEventListener('click', showModal);
+
+	function showModal(){
+		modal.classList.remove('hide');
+		modal.classList.add('show');
+		document.querySelector('.modal--form').classList.remove('show');
+		document.querySelector('.modal--form').classList.add('hide');
+		setTimeout(hideModal, 2000);
+	}
+	function hideModal(){
+		modal.classList.remove('show');
+		modal.classList.add('hide');
+	}
+
+	document.addEventListener('keydown', (evt) =>{
+		if (evt.code === 'Escape' && modal.classList.contains('show')){
+			hideModal();
+		}
+	});
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (modalThankWindow);
 
 /***/ })
 
