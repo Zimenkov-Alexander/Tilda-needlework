@@ -10,6 +10,12 @@
 	position: relative;
 	z-index: 101;
 	cursor: pointer;
+	transition: 0.8s;
+	&:focus{
+		transition: 0.2s;
+		outline: none;
+		border: 2px solid rgba(0, 0, 0, 0.7);
+	}
 }
 .btn--grey{
 	color: #72736b;
@@ -21,21 +27,47 @@
 	width: 270px;
 	height: 55px;
 	font-size: 14px;
+	
+	&:hover{
+		background-color: hsl(67, 4%, 84%);
+	}
+	&:active{
+		background-color: hsl(67, 4%, 74%);
+		color: white;
+	}
 }
 .btn--orange{
 	color: white;
 	background: linear-gradient(to bottom, #f7a748 0%, #e28413 100%);
 	box-shadow: 0px 3px 9px 0 #ae4e0e;
 	min-height: 60px;
+	&:hover{
+		font-size: 13px;
+	}
+	&:active{
+		background: linear-gradient(to bottom, #fac079 0%, #e69736 100%);
+	}
+	&:focus{
+		border: 2px solid hsl(33, 92%, 73%);
+	}
 }
 .btn--light-green{
 	color: black;
 	background: linear-gradient(to bottom, #d7e359 0%, #aebb1e 100%);
 	box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.7);
+	&:hover{
+		font-size: 13px;
+	}
+	&:active{
+		background: linear-gradient(to bottom, #dbe667 0%, #b4c034 100%);
+	}
+	&:focus{
+		border: 2px solid hsl(65, 71%, 73%);
+	}
 }
 .btn--home{
 	max-width: 370px;
-	height: 60px;
+	max-height: 60px;
 }
 .btn--prise{
 	width: 270px;
