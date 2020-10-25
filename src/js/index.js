@@ -5,5 +5,5 @@ import modalThankWindow from './modules/modal-thank-window';
 
 window.addEventListener('DOMContentLoaded', () => {
 	modalForm('.modal--form','.close__modal', '.btn');
-	// modalThankWindow();
+	modalThankWindow('.modal--thank-window', '.btn--form-modal');
 });

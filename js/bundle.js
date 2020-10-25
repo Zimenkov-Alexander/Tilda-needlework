@@ -104,7 +104,7 @@ __webpack_require__.r(__webpack_exports__);
 
 window.addEventListener('DOMContentLoaded', () => {
 	Object(_modules_modal_form__WEBPACK_IMPORTED_MODULE_0__["default"])('.modal--form','.close__modal', '.btn');
-	// modalThankWindow();
+	Object(_modules_modal_thank_window__WEBPACK_IMPORTED_MODULE_1__["default"])('.modal--thank-window', '.btn--form-modal');
 });
 
 /***/ }),
@@ -118,13 +118,17 @@ window.addEventListener('DOMContentLoaded', () => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function modalForm (modalWindow, modalClose, ...btnsSelector) {
+function modalForm (modalWindow, modalClose, ...btnsOpenSelectors) {
 
-	btnsSelector.forEach(item => {
+	btnsOpenSelectors.forEach(item => {
 		document.querySelectorAll(item).forEach(btn => {
 			btn.addEventListener('click', (evt) => {
-				evt.preventDefault();
-				showModal();
+				if (btn.classList.contains('btn--form-modal')){
+					evt.preventDefault();
+				} else{
+					evt.preventDefault();
+					showModal();
+				}
 			});
 		});
 	});
@@ -162,52 +166,33 @@ function modalForm (modalWindow, modalClose, ...btnsSelector) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function modal () {
+function modalThankWindow (modalWindow, modalOpenBtn) {
 
-	const modalOpenBtn = document.querySelectorAll('[data-modal]'),
-		modal = document.querySelector('.modal'),
-		modalTimerId = setTimeout(modalToggle, (1000 * 60 * 3));
+	const modal = document.querySelector(modalWindow),
+				OpenBtn = document.querySelector(modalOpenBtn);
 
-	function modalToggle () {
-		modal.classList.toggle('show');
-		modal.classList.toggle('hide');
+	OpenBtn.addEventListener('click', showModal);
 
-		clearInterval(modalTimerId);
-
-		if (modal.classList.contains('show')){
-			document.body.style.overflow = 'hidden';
-		} else{
-			document.body.style.overflow = '';
-		}
+	function showModal(){
+		modal.classList.remove('hide');
+		modal.classList.add('show');
+		document.querySelector('.modal--form').classList.remove('show');
+		document.querySelector('.modal--form').classList.add('hide');
+		setTimeout(hideModal, 2000);
+	}
+	function hideModal(){
+		modal.classList.remove('show');
+		modal.classList.add('hide');
 	}
 
-	function showModalByScroll (){
-		if (window.pageYOffset + document.documentElement.clientHeight >= document.
-			documentElement.scrollHeight){
-				modalToggle();
-				window.removeEventListener('scroll', showModalByScroll);
-		}
-	}
-
-	modalOpenBtn.forEach( (item) => {
-		item.addEventListener('click', modalToggle);
-	});
-
-	modal.addEventListener('click', (evt) => {
-		if (evt.target === modal || evt.target.getAttribute('data-close') == ""){
-			modalToggle();
-		}
-	});
-	
 	document.addEventListener('keydown', (evt) =>{
 		if (evt.code === 'Escape' && modal.classList.contains('show')){
-			modalToggle();
+			hideModal();
 		}
 	});
-
-	window.addEventListener('scroll', showModalByScroll);
 }
-/* harmony default export */ __webpack_exports__["default"] = (modal);
+
+/* harmony default export */ __webpack_exports__["default"] = (modalThankWindow);
 
 /***/ })
 

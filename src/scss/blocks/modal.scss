@@ -3,10 +3,14 @@
 	left: 0;
 	position: fixed;
 	z-index: 999;
+	transition: 0.5s;
 }
 .modal.hide{
-	display: none;
+	z-index: 0;
+	overflow: hidden;
+	opacity: 0;
 }
 .modal.show{
-	display: block;
+	z-index: 999;
+	opacity: 1;
 }

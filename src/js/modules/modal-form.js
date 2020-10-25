@@ -1,10 +1,14 @@
-function modalForm (modalWindow, modalClose, ...btnsSelector) {
+function modalForm (modalWindow, modalClose, ...btnsOpenSelectors) {
 
-	btnsSelector.forEach(item => {
+	btnsOpenSelectors.forEach(item => {
 		document.querySelectorAll(item).forEach(btn => {
 			btn.addEventListener('click', (evt) => {
-				evt.preventDefault();
-				showModal();
+				if (btn.classList.contains('btn--form-modal')){
+					evt.preventDefault();
+				} else{
+					evt.preventDefault();
+					showModal();
+				}
 			});
 		});
 	});
